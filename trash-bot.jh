@@ -70,12 +70,12 @@ relationship OneToOne {
 	Order{garbage} to Garbage
 }
 
-relationship OneToMany {
-	Order to User{orders}
+relationship ManyToOne {
+	Order{user} to User
 }
 
-relationship OneToMany {
-	Order to Courier{orders}
+relationship ManyToOne {
+	Order{courier} to Courier
 }
 
 relationship ManyToOne {
