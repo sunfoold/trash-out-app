@@ -51,6 +51,12 @@
             <column name="garbage_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_jhi_order_garbage_id" />
             </column>
+            <column name="user_id" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="courier_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="jhi_order" columnName="order_date" columnDataType="datetime"/>

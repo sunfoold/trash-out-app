@@ -43,10 +43,6 @@ public class Courier implements Serializable {
     @JsonIgnoreProperties(value = "couriers", allowSetters = true)
     private CourierCompany company;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "couriers", allowSetters = true)
-    private Order orders;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -132,19 +128,6 @@ public class Courier implements Serializable {
 
     public void setCompany(CourierCompany courierCompany) {
         this.company = courierCompany;
-    }
-
-    public Order getOrders() {
-        return orders;
-    }
-
-    public Courier orders(Order order) {
-        this.orders = order;
-        return this;
-    }
-
-    public void setOrders(Order order) {
-        this.orders = order;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

@@ -12,6 +12,12 @@ import { IOrder, Order } from 'app/shared/model/order.model';
 import { OrderService } from './order.service';
 import { IGarbage } from 'app/shared/model/garbage.model';
 import { GarbageService } from 'app/entities/garbage/garbage.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
+import { ICourier } from 'app/shared/model/courier.model';
+import { CourierService } from 'app/entities/courier/courier.service';
+
+type SelectableEntity = IGarbage | IUser | ICourier;
 
 @Component({
   selector: 'jhi-order-update',
@@ -20,6 +26,8 @@ import { GarbageService } from 'app/entities/garbage/garbage.service';
 export class OrderUpdateComponent implements OnInit {
   isSaving = false;
   garbage: IGarbage[] = [];
+  users: IUser[] = [];
+  couriers: ICourier[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -35,11 +43,15 @@ export class OrderUpdateComponent implements OnInit {
     courierRatio: [],
     userRatio: [],
     garbage: [],
+    user: [],
+    courier: [],
   });
 
   constructor(
     protected orderService: OrderService,
     protected garbageService: GarbageService,
+    protected userService: UserService,
+    protected courierService: CourierService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -77,6 +89,10 @@ export class OrderUpdateComponent implements OnInit {
               .subscribe((concatRes: IGarbage[]) => (this.garbage = concatRes));
           }
         });
+
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+
+      this.courierService.query().subscribe((res: HttpResponse<ICourier[]>) => (this.couriers = res.body || []));
     });
   }
 
@@ -95,6 +111,8 @@ export class OrderUpdateComponent implements OnInit {
       courierRatio: order.courierRatio,
       userRatio: order.userRatio,
       garbage: order.garbage,
+      user: order.user,
+      courier: order.courier,
     });
   }
 
@@ -132,6 +150,8 @@ export class OrderUpdateComponent implements OnInit {
       courierRatio: this.editForm.get(['courierRatio'])!.value,
       userRatio: this.editForm.get(['userRatio'])!.value,
       garbage: this.editForm.get(['garbage'])!.value,
+      user: this.editForm.get(['user'])!.value,
+      courier: this.editForm.get(['courier'])!.value,
     };
   }
 
@@ -151,7 +171,7 @@ export class OrderUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IGarbage): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

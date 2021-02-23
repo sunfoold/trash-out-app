@@ -57,16 +57,18 @@
       "ownerSide": true
     },
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "user",
-      "otherEntityRelationshipName": "orders",
-      "relationshipName": "user"
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "user",
+      "otherEntityField": "id"
     },
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "courier",
-      "otherEntityRelationshipName": "orders",
-      "relationshipName": "courier"
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "courier",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20210223152948",

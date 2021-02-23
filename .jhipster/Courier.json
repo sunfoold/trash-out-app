@@ -29,13 +29,6 @@
       "otherEntityRelationshipName": "courier",
       "relationshipName": "company",
       "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "order",
-      "otherEntityRelationshipName": "courier",
-      "relationshipName": "orders",
-      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20210223153148",

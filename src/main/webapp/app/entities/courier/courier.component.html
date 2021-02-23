@@ -29,7 +29,6 @@
                     <th scope="col" ><span jhiTranslate="trashBotApp.courier.telegramChatId">Telegram Chat Id</span></th>
                     <th scope="col" ><span jhiTranslate="trashBotApp.courier.joinDate">Join Date</span></th>
                     <th scope="col" ><span jhiTranslate="trashBotApp.courier.company">Company</span></th>
-                    <th scope="col" ><span jhiTranslate="trashBotApp.courier.orders">Orders</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -44,11 +43,6 @@
                     <td>
                         <div *ngIf="courier.company">
                             <a [routerLink]="['/courier-company', courier.company?.id, 'view']" >{{ courier.company?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="courier.orders">
-                            <a [routerLink]="['/order', courier.orders?.id, 'view']" >{{ courier.orders?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

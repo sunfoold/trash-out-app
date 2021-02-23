@@ -49,14 +49,6 @@
                         <option [ngValue]="courierCompanyOption.id === editForm.get('company')!.value?.id ? editForm.get('company')!.value : courierCompanyOption" *ngFor="let courierCompanyOption of couriercompanies; trackBy: trackById">{{ courierCompanyOption.id }}</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="trashBotApp.courier.orders" for="field_orders">Orders</label>
-                    <select class="form-control" id="field_orders" name="orders" formControlName="orders">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="orderOption.id === editForm.get('orders')!.value?.id ? editForm.get('orders')!.value : orderOption" *ngFor="let orderOption of orders; trackBy: trackById">{{ orderOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

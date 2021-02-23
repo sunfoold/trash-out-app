@@ -58,6 +58,16 @@
                         <a [routerLink]="['/garbage', order.garbage?.id, 'view']">{{ order.garbage?.id }}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="trashBotApp.order.user">User</span></dt>
+                <dd>
+                    {{ order.user?.id }}
+                </dd>
+                <dt><span jhiTranslate="trashBotApp.order.courier">Courier</span></dt>
+                <dd>
+                    <div *ngIf="order.courier">
+                        <a [routerLink]="['/courier', order.courier?.id, 'view']">{{ order.courier?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

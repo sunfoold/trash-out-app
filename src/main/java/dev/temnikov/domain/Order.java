@@ -1,5 +1,6 @@
 package dev.temnikov.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,8 +8,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 import dev.temnikov.domain.enumeration.OrderStatus;
 
@@ -65,13 +64,13 @@ public class Order implements Serializable {
     @JoinColumn(unique = true)
     private Garbage garbage;
 
-    @OneToMany(mappedBy = "orders")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<User> users = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "orders", allowSetters = true)
+    private User user;
 
-    @OneToMany(mappedBy = "orders")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Courier> couriers = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "orders", allowSetters = true)
+    private Courier courier;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -238,54 +237,30 @@ public class Order implements Serializable {
         this.garbage = garbage;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public Order users(Set<User> users) {
-        this.users = users;
+    public Order user(User user) {
+        this.user = user;
         return this;
     }
 
-    public Order addUser(User user) {
-        this.users.add(user);
-        user.setOrders(this);
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Courier getCourier() {
+        return courier;
+    }
+
+    public Order courier(Courier courier) {
+        this.courier = courier;
         return this;
     }
 
-    public Order removeUser(User user) {
-        this.users.remove(user);
-        user.setOrders(null);
-        return this;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    public Set<Courier> getCouriers() {
-        return couriers;
-    }
-
-    public Order couriers(Set<Courier> couriers) {
-        this.couriers = couriers;
-        return this;
-    }
-
-    public Order addCourier(Courier courier) {
-        this.couriers.add(courier);
-        courier.setOrders(this);
-        return this;
-    }
-
-    public Order removeCourier(Courier courier) {
-        this.couriers.remove(courier);
-        courier.setOrders(null);
-        return this;
-    }
-
-    public void setCouriers(Set<Courier> couriers) {
-        this.couriers = couriers;
+    public void setCourier(Courier courier) {
+        this.courier = courier;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
