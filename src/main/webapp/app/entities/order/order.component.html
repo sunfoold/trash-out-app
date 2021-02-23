@@ -35,6 +35,8 @@
                     <th scope="col" ><span jhiTranslate="trashBotApp.order.courierRatio">Courier Ratio</span></th>
                     <th scope="col" ><span jhiTranslate="trashBotApp.order.userRatio">User Ratio</span></th>
                     <th scope="col" ><span jhiTranslate="trashBotApp.order.garbage">Garbage</span></th>
+                    <th scope="col" ><span jhiTranslate="trashBotApp.order.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="trashBotApp.order.courier">Courier</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -55,6 +57,14 @@
                     <td>
                         <div *ngIf="order.garbage">
                             <a [routerLink]="['/garbage', order.garbage?.id, 'view']" >{{ order.garbage?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ order.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="order.courier">
+                            <a [routerLink]="['/courier', order.courier?.id, 'view']" >{{ order.courier?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

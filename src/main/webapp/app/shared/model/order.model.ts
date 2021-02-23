@@ -18,8 +18,8 @@ export interface IOrder {
   courierRatio?: number;
   userRatio?: number;
   garbage?: IGarbage;
-  users?: IUser[];
-  couriers?: ICourier[];
+  user?: IUser;
+  courier?: ICourier;
 }
 
 export class Order implements IOrder {
@@ -37,7 +37,7 @@ export class Order implements IOrder {
     public courierRatio?: number,
     public userRatio?: number,
     public garbage?: IGarbage,
-    public users?: IUser[],
-    public couriers?: ICourier[]
+    public user?: IUser,
+    public courier?: ICourier
   ) {}
 }

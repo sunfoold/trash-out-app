@@ -11,10 +11,6 @@ import { ICourier, Courier } from 'app/shared/model/courier.model';
 import { CourierService } from './courier.service';
 import { ICourierCompany } from 'app/shared/model/courier-company.model';
 import { CourierCompanyService } from 'app/entities/courier-company/courier-company.service';
-import { IOrder } from 'app/shared/model/order.model';
-import { OrderService } from 'app/entities/order/order.service';
-
-type SelectableEntity = ICourierCompany | IOrder;
 
 @Component({
   selector: 'jhi-courier-update',
@@ -23,7 +19,6 @@ type SelectableEntity = ICourierCompany | IOrder;
 export class CourierUpdateComponent implements OnInit {
   isSaving = false;
   couriercompanies: ICourierCompany[] = [];
-  orders: IOrder[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -33,13 +28,11 @@ export class CourierUpdateComponent implements OnInit {
     telegramChatId: [],
     joinDate: [],
     company: [],
-    orders: [],
   });
 
   constructor(
     protected courierService: CourierService,
     protected courierCompanyService: CourierCompanyService,
-    protected orderService: OrderService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -54,8 +47,6 @@ export class CourierUpdateComponent implements OnInit {
       this.updateForm(courier);
 
       this.courierCompanyService.query().subscribe((res: HttpResponse<ICourierCompany[]>) => (this.couriercompanies = res.body || []));
-
-      this.orderService.query().subscribe((res: HttpResponse<IOrder[]>) => (this.orders = res.body || []));
     });
   }
 
@@ -68,7 +59,6 @@ export class CourierUpdateComponent implements OnInit {
       telegramChatId: courier.telegramChatId,
       joinDate: courier.joinDate ? courier.joinDate.format(DATE_TIME_FORMAT) : null,
       company: courier.company,
-      orders: courier.orders,
     });
   }
 
@@ -96,7 +86,6 @@ export class CourierUpdateComponent implements OnInit {
       telegramChatId: this.editForm.get(['telegramChatId'])!.value,
       joinDate: this.editForm.get(['joinDate'])!.value ? moment(this.editForm.get(['joinDate'])!.value, DATE_TIME_FORMAT) : undefined,
       company: this.editForm.get(['company'])!.value,
-      orders: this.editForm.get(['orders'])!.value,
     };
   }
 
@@ -116,7 +105,7 @@ export class CourierUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: ICourierCompany): any {
     return item.id;
   }
 }

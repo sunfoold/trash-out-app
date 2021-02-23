@@ -21,8 +21,7 @@
       "photoUrl": "Photo Url",
       "telegramChatId": "Telegram Chat Id",
       "joinDate": "Join Date",
-      "company": "Company",
-      "orders": "Orders"
+      "company": "Company"
     }
   }
 }

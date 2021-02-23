@@ -34,12 +34,6 @@
                         <a [routerLink]="['/courier-company', courier.company?.id, 'view']">{{ courier.company?.id }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="trashBotApp.courier.orders">Orders</span></dt>
-                <dd>
-                    <div *ngIf="courier.orders">
-                        <a [routerLink]="['/order', courier.orders?.id, 'view']">{{ courier.orders?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"
