@@ -50,6 +50,14 @@ public class CacheConfiguration {
             createCache(cm, dev.temnikov.domain.User.class.getName());
             createCache(cm, dev.temnikov.domain.Authority.class.getName());
             createCache(cm, dev.temnikov.domain.User.class.getName() + ".authorities");
+            createCache(cm, dev.temnikov.domain.Order.class.getName());
+            createCache(cm, dev.temnikov.domain.Order.class.getName() + ".users");
+            createCache(cm, dev.temnikov.domain.Order.class.getName() + ".couriers");
+            createCache(cm, dev.temnikov.domain.Courier.class.getName());
+            createCache(cm, dev.temnikov.domain.Shift.class.getName());
+            createCache(cm, dev.temnikov.domain.CourierCompany.class.getName());
+            createCache(cm, dev.temnikov.domain.Garbage.class.getName());
+            createCache(cm, dev.temnikov.domain.Address.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
