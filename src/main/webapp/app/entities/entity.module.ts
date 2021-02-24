@@ -32,6 +32,10 @@ import { RouterModule } from '@angular/router';
         path: 'payment',
         loadChildren: () => import('./payment/payment.module').then(m => m.TrashBotPaymentModule),
       },
+      {
+        path: 'app-user',
+        loadChildren: () => import('./app-user/app-user.module').then(m => m.TrashBotAppUserModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

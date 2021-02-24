@@ -12,12 +12,12 @@ import { IOrder, Order } from 'app/shared/model/order.model';
 import { OrderService } from './order.service';
 import { IGarbage } from 'app/shared/model/garbage.model';
 import { GarbageService } from 'app/entities/garbage/garbage.service';
-import { IUser } from 'app/core/user/user.model';
-import { UserService } from 'app/core/user/user.service';
+import { IAppUser } from 'app/shared/model/app-user.model';
+import { AppUserService } from 'app/entities/app-user/app-user.service';
 import { ICourier } from 'app/shared/model/courier.model';
 import { CourierService } from 'app/entities/courier/courier.service';
 
-type SelectableEntity = IGarbage | IUser | ICourier;
+type SelectableEntity = IGarbage | IAppUser | ICourier;
 
 @Component({
   selector: 'jhi-order-update',
@@ -26,7 +26,7 @@ type SelectableEntity = IGarbage | IUser | ICourier;
 export class OrderUpdateComponent implements OnInit {
   isSaving = false;
   garbage: IGarbage[] = [];
-  users: IUser[] = [];
+  appusers: IAppUser[] = [];
   couriers: ICourier[] = [];
 
   editForm = this.fb.group({
@@ -50,7 +50,7 @@ export class OrderUpdateComponent implements OnInit {
   constructor(
     protected orderService: OrderService,
     protected garbageService: GarbageService,
-    protected userService: UserService,
+    protected appUserService: AppUserService,
     protected courierService: CourierService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -90,7 +90,7 @@ export class OrderUpdateComponent implements OnInit {
           }
         });
 
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+      this.appUserService.query().subscribe((res: HttpResponse<IAppUser[]>) => (this.appusers = res.body || []));
 
       this.courierService.query().subscribe((res: HttpResponse<ICourier[]>) => (this.couriers = res.body || []));
     });

@@ -38,7 +38,7 @@ public class Payment implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "payments", allowSetters = true)
-    private User user;
+    private AppUser user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -88,17 +88,17 @@ public class Payment implements Serializable {
         this.value = value;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
-    public Payment user(User user) {
-        this.user = user;
+    public Payment user(AppUser appUser) {
+        this.user = appUser;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AppUser appUser) {
+        this.user = appUser;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

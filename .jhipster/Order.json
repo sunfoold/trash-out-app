@@ -58,7 +58,7 @@
     },
     {
       "relationshipType": "many-to-one",
-      "otherEntityName": "user",
+      "otherEntityName": "appUser",
       "otherEntityRelationshipName": "order",
       "relationshipName": "user",
       "otherEntityField": "id"

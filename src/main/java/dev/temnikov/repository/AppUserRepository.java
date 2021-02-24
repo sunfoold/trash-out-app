@@ -1,14 +1,14 @@
 package dev.temnikov.repository;
 
-import dev.temnikov.domain.Order;
+import dev.temnikov.domain.AppUser;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data  repository for the Order entity.
+ * Spring Data  repository for the AppUser entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 }
