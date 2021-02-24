@@ -32,6 +32,12 @@
                 <dd>
                     <span>{{ address.longitude }}</span>
                 </dd>
+                <dt><span jhiTranslate="trashBotApp.address.appUser">App User</span></dt>
+                <dd>
+                    <div *ngIf="address.appUser">
+                        <a [routerLink]="['/app-user', address.appUser?.id, 'view']">{{ address.appUser?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

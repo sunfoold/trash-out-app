@@ -60,6 +60,7 @@ public class CacheConfiguration {
             createCache(cm, dev.temnikov.domain.Address.class.getName());
             createCache(cm, dev.temnikov.domain.Payment.class.getName());
             createCache(cm, dev.temnikov.domain.AppUser.class.getName());
+            createCache(cm, dev.temnikov.domain.AppUser.class.getName() + ".addresses");
             // jhipster-needle-ehcache-add-entry
         };
     }

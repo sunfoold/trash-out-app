@@ -1,3 +1,5 @@
+import { IAddress } from 'app/shared/model/address.model';
+
 export interface IAppUser {
   id?: number;
   name?: string;
@@ -6,6 +8,7 @@ export interface IAppUser {
   telegramChatId?: number;
   balance?: number;
   promoCode?: string;
+  addresses?: IAddress[];
 }
 
 export class AppUser implements IAppUser {
@@ -16,6 +19,7 @@ export class AppUser implements IAppUser {
     public email?: string,
     public telegramChatId?: number,
     public balance?: number,
-    public promoCode?: string
+    public promoCode?: string,
+    public addresses?: IAddress[]
   ) {}
 }

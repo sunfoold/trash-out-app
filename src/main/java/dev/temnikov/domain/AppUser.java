@@ -6,6 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A AppUser.
@@ -39,6 +41,10 @@ public class AppUser implements Serializable {
 
     @Column(name = "promo_code")
     private String promoCode;
+
+    @OneToMany(mappedBy = "appUser")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Address> addresses = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -125,6 +131,31 @@ public class AppUser implements Serializable {
 
     public void setPromoCode(String promoCode) {
         this.promoCode = promoCode;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public AppUser addresses(Set<Address> addresses) {
+        this.addresses = addresses;
+        return this;
+    }
+
+    public AppUser addAddresses(Address address) {
+        this.addresses.add(address);
+        address.setAppUser(this);
+        return this;
+    }
+
+    public AppUser removeAddresses(Address address) {
+        this.addresses.remove(address);
+        address.setAppUser(null);
+        return this;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

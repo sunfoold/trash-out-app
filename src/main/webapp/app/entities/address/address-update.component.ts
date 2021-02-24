@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IAddress, Address } from 'app/shared/model/address.model';
 import { AddressService } from './address.service';
+import { IAppUser } from 'app/shared/model/app-user.model';
+import { AppUserService } from 'app/entities/app-user/app-user.service';
 
 @Component({
   selector: 'jhi-address-update',
@@ -14,6 +16,7 @@ import { AddressService } from './address.service';
 })
 export class AddressUpdateComponent implements OnInit {
   isSaving = false;
+  appusers: IAppUser[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -23,13 +26,21 @@ export class AddressUpdateComponent implements OnInit {
     apartment: [],
     latitude: [],
     longitude: [],
+    appUser: [],
   });
 
-  constructor(protected addressService: AddressService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected addressService: AddressService,
+    protected appUserService: AppUserService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ address }) => {
       this.updateForm(address);
+
+      this.appUserService.query().subscribe((res: HttpResponse<IAppUser[]>) => (this.appusers = res.body || []));
     });
   }
 
@@ -42,6 +53,7 @@ export class AddressUpdateComponent implements OnInit {
       apartment: address.apartment,
       latitude: address.latitude,
       longitude: address.longitude,
+      appUser: address.appUser,
     });
   }
 
@@ -69,6 +81,7 @@ export class AddressUpdateComponent implements OnInit {
       apartment: this.editForm.get(['apartment'])!.value,
       latitude: this.editForm.get(['latitude'])!.value,
       longitude: this.editForm.get(['longitude'])!.value,
+      appUser: this.editForm.get(['appUser'])!.value,
     };
   }
 
@@ -86,5 +99,9 @@ export class AddressUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IAppUser): any {
+    return item.id;
   }
 }

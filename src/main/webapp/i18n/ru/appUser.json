@@ -21,7 +21,8 @@
       "email": "Email",
       "telegramChatId": "Telegram Chat Id",
       "balance": "Balance",
-      "promoCode": "Promo Code"
+      "promoCode": "Promo Code",
+      "addresses": "Addresses"
     }
   }
 }

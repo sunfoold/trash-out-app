@@ -26,7 +26,14 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "addresses"
+    }
+  ],
   "changelogDate": "20210224100435",
   "entityTableName": "app_user",
   "dto": "no",
