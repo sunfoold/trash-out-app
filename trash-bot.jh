@@ -28,9 +28,7 @@ entity Payment{
     value Integer
 }
 
-
-
-entity User {
+entity AppUser {
 	name String,
     phoneNumber String,
     email String,
@@ -83,11 +81,11 @@ relationship OneToOne {
 }
 
 relationship ManyToOne {
-	Order{user} to User
+	Order{user} to AppUser
 }
 
 relationship ManyToOne {
-	Payment{user} to User
+	Payment{user} to AppUser
 }
 
 relationship ManyToOne {
