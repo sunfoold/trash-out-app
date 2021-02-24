@@ -58,6 +58,7 @@ public class CacheConfiguration {
             createCache(cm, dev.temnikov.domain.CourierCompany.class.getName());
             createCache(cm, dev.temnikov.domain.Garbage.class.getName());
             createCache(cm, dev.temnikov.domain.Address.class.getName());
+            createCache(cm, dev.temnikov.domain.Payment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

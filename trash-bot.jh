@@ -18,6 +18,18 @@ enum OrderStatus {
     NEW, ASSIGNED, CANCELED, IN_PROGRESS, COMPLETED
 }
 
+enum PaymentStatus {
+    SUCCESS, FAIL
+}
+
+entity Payment{
+	paymentDate Instant,
+    status PaymentStatus,
+    value Integer
+}
+
+
+
 entity User {
 	name String,
     phoneNumber String,
@@ -72,6 +84,10 @@ relationship OneToOne {
 
 relationship ManyToOne {
 	Order{user} to User
+}
+
+relationship ManyToOne {
+	Payment{user} to User
 }
 
 relationship ManyToOne {
