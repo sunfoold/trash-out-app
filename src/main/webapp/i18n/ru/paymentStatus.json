@@ -1,0 +1,9 @@
+{
+  "trashBotApp": {
+    "PaymentStatus": {
+      "null": "",
+      "SUCCESS": "SUCCESS",
+      "FAIL": "FAIL"
+    }
+  }
+}
