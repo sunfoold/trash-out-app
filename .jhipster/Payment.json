@@ -18,7 +18,7 @@
   "relationships": [
     {
       "relationshipType": "many-to-one",
-      "otherEntityName": "user",
+      "otherEntityName": "appUser",
       "otherEntityRelationshipName": "payment",
       "relationshipName": "user",
       "otherEntityField": "id"

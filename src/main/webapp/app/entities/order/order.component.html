@@ -60,7 +60,9 @@
                         </div>
                     </td>
                     <td>
-                        {{ order.user?.id }}
+                        <div *ngIf="order.user">
+                            <a [routerLink]="['/app-user', order.user?.id, 'view']" >{{ order.user?.id }}</a>
+                        </div>
                     </td>
                     <td>
                         <div *ngIf="order.courier">

@@ -37,7 +37,9 @@
                     <td jhiTranslate="{{ 'trashBotApp.PaymentStatus.' + payment.status }}">{{ payment.status }}</td>
                     <td>{{ payment.value }}</td>
                     <td>
-                        {{ payment.user?.id }}
+                        <div *ngIf="payment.user">
+                            <a [routerLink]="['/app-user', payment.user?.id, 'view']" >{{ payment.user?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

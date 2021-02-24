@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
 import { IGarbage } from 'app/shared/model/garbage.model';
-import { IUser } from 'app/core/user/user.model';
+import { IAppUser } from 'app/shared/model/app-user.model';
 import { ICourier } from 'app/shared/model/courier.model';
 import { OrderStatus } from 'app/shared/model/enumerations/order-status.model';
 
@@ -18,7 +18,7 @@ export interface IOrder {
   courierRatio?: number;
   userRatio?: number;
   garbage?: IGarbage;
-  user?: IUser;
+  user?: IAppUser;
   courier?: ICourier;
 }
 
@@ -37,7 +37,7 @@ export class Order implements IOrder {
     public courierRatio?: number,
     public userRatio?: number,
     public garbage?: IGarbage,
-    public user?: IUser,
+    public user?: IAppUser,
     public courier?: ICourier
   ) {}
 }

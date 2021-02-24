@@ -9,8 +9,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IPayment, Payment } from 'app/shared/model/payment.model';
 import { PaymentService } from './payment.service';
-import { IUser } from 'app/core/user/user.model';
-import { UserService } from 'app/core/user/user.service';
+import { IAppUser } from 'app/shared/model/app-user.model';
+import { AppUserService } from 'app/entities/app-user/app-user.service';
 
 @Component({
   selector: 'jhi-payment-update',
@@ -18,7 +18,7 @@ import { UserService } from 'app/core/user/user.service';
 })
 export class PaymentUpdateComponent implements OnInit {
   isSaving = false;
-  users: IUser[] = [];
+  appusers: IAppUser[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -30,7 +30,7 @@ export class PaymentUpdateComponent implements OnInit {
 
   constructor(
     protected paymentService: PaymentService,
-    protected userService: UserService,
+    protected appUserService: AppUserService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -44,7 +44,7 @@ export class PaymentUpdateComponent implements OnInit {
 
       this.updateForm(payment);
 
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+      this.appUserService.query().subscribe((res: HttpResponse<IAppUser[]>) => (this.appusers = res.body || []));
     });
   }
 
@@ -101,7 +101,7 @@ export class PaymentUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IUser): any {
+  trackById(index: number, item: IAppUser): any {
     return item.id;
   }
 }

@@ -60,7 +60,9 @@
                 </dd>
                 <dt><span jhiTranslate="trashBotApp.order.user">User</span></dt>
                 <dd>
-                    {{ order.user?.id }}
+                    <div *ngIf="order.user">
+                        <a [routerLink]="['/app-user', order.user?.id, 'view']">{{ order.user?.id }}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="trashBotApp.order.courier">Courier</span></dt>
                 <dd>

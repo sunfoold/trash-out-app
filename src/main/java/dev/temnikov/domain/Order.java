@@ -66,7 +66,7 @@ public class Order implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "orders", allowSetters = true)
-    private User user;
+    private AppUser user;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "orders", allowSetters = true)
@@ -237,17 +237,17 @@ public class Order implements Serializable {
         this.garbage = garbage;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
-    public Order user(User user) {
-        this.user = user;
+    public Order user(AppUser appUser) {
+        this.user = appUser;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AppUser appUser) {
+        this.user = appUser;
     }
 
     public Courier getCourier() {

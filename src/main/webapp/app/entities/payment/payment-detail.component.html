@@ -22,7 +22,9 @@
                 </dd>
                 <dt><span jhiTranslate="trashBotApp.payment.user">User</span></dt>
                 <dd>
-                    {{ payment.user?.id }}
+                    <div *ngIf="payment.user">
+                        <a [routerLink]="['/app-user', payment.user?.id, 'view']">{{ payment.user?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 
