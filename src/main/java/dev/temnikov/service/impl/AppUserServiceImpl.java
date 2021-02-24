@@ -53,4 +53,10 @@ public class AppUserServiceImpl implements AppUserService {
         log.debug("Request to delete AppUser : {}", id);
         appUserRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<AppUser> findByTelegramChatId(Long chatId) {
+        log.debug("Request to get AppUser by chatId : {}", chatId);
+        return appUserRepository.findByTelegramChatId(chatId);
+    }
 }
