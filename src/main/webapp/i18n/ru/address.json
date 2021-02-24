@@ -21,7 +21,8 @@
       "level": "Level",
       "apartment": "Apartment",
       "latitude": "Latitude",
-      "longitude": "Longitude"
+      "longitude": "Longitude",
+      "appUser": "App User"
     }
   }
 }

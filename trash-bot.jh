@@ -96,5 +96,9 @@ relationship ManyToOne {
 	Courier{company} to CourierCompany
 }
 
+relationship OneToMany {
+ 	AppUser{addresses} to Address
+}
+
 
 service all with serviceImpl 
